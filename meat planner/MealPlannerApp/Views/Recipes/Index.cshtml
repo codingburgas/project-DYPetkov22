@@ -1,0 +1,59 @@
+@model IEnumerable<MealPlannerApp.Dtos.Recipes.RecipeDto>
+@{
+    ViewData["Title"] = "Recipes";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Recipes</h1>
+    <a asp-action="Create" class="btn btn-primary">Create Recipe</a>
+</div>
+
+<form asp-action="Index" method="get" class="card card-body mb-3">
+    <div class="row g-3 align-items-end">
+        <div class="col-md-4">
+            <label class="form-label">Ingredient</label>
+            <input type="text" name="ingredientName" value="@ViewData["IngredientName"]" class="form-control" placeholder="e.g. Rice" />
+        </div>
+        <div class="col-md-2 form-check">
+            <input class="form-check-input" type="checkbox" name="vegetarianOnly" value="true" @(Convert.ToBoolean(ViewData["VegetarianOnly"]) ? "checked" : "") />
+            <label class="form-check-label">Vegetarian</label>
+        </div>
+        <div class="col-md-3 form-check">
+            <input class="form-check-input" type="checkbox" name="highProteinOnly" value="true" @(Convert.ToBoolean(ViewData["HighProteinOnly"]) ? "checked" : "") />
+            <label class="form-check-label">High-Protein</label>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-outline-primary w-100">Apply Filters</button>
+        </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Cook Time</th>
+            <th>Calories</th>
+            <th>Vegetarian</th>
+            <th class="text-end">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var recipe in Model)
+        {
+            <tr>
+                <td>@recipe.Name</td>
+                <td>@recipe.CookingTime min</td>
+                <td>@recipe.Calories kcal</td>
+                <td>@(recipe.IsVegetarian ? "Yes" : "No")</td>
+                <td class="text-end">
+                    <a asp-action="Details" asp-route-id="@recipe.Id" class="btn btn-sm btn-outline-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@recipe.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@recipe.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,35 @@
+@model IEnumerable<MealPlannerApp.Dtos.Ingredients.IngredientDto>
+@{
+    ViewData["Title"] = "Ingredients";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Ingredients</h1>
+    <a asp-action="Create" class="btn btn-primary">Create Ingredient</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Calories / 100g</th>
+            <th class="text-end">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var ingredient in Model)
+        {
+            <tr>
+                <td>@ingredient.Name</td>
+                <td>@ingredient.CaloriesPer100g</td>
+                <td class="text-end">
+                    <a asp-action="Details" asp-route-id="@ingredient.Id" class="btn btn-sm btn-outline-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@ingredient.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@ingredient.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

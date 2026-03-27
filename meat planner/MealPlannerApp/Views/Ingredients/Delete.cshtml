@@ -1,0 +1,19 @@
+@model MealPlannerApp.Dtos.Ingredients.IngredientDto
+@{
+    ViewData["Title"] = "Delete Ingredient";
+}
+
+<div class="card border-danger">
+    <div class="card-header bg-danger text-white">
+        Delete Ingredient
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete <strong>@Model.Name</strong>?</p>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post" class="mt-3 d-flex gap-2">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+</form>

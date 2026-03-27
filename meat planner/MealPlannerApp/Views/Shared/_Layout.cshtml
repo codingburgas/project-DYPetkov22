@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MealPlannerApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" asp-controller="Home" asp-action="Index">MealPlannerApp</a>
+            <div class="ms-auto d-flex flex-wrap gap-2">
+                <a class="btn btn-outline-light btn-sm" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="btn btn-outline-light btn-sm" asp-controller="Recipes" asp-action="Index">Recipes</a>
+                <a class="btn btn-outline-light btn-sm" asp-controller="Ingredients" asp-action="Index">Ingredients</a>
+                <a class="btn btn-outline-light btn-sm" asp-controller="MealPlans" asp-action="Index">Meal Plans</a>
+                <a class="btn btn-outline-light btn-sm" asp-controller="MealPlans" asp-action="Weekly">Statistics</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container mt-4">
+    <main role="main">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="bg-light text-center text-muted mt-5 p-3 border-top">
+    <div class="container">
+        &copy; 2026 - MealPlannerApp
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

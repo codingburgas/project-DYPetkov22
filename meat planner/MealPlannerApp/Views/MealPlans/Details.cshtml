@@ -1,0 +1,93 @@
+@model MealPlannerApp.Dtos.MealPlans.MealPlanDto
+@{
+    ViewData["Title"] = "Meal Plan Details";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Meal Plan Details</h1>
+    <a asp-action="AddMeal" asp-route-userId="@Model.UserId" asp-route-weekStart="@Model.Date.ToString("yyyy-MM-dd")" class="btn btn-primary">Add Meal</a>
+</div>
+
+<div class="row g-3 mb-3">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Date</h2>
+                <div class="fs-5">@Model.Date.ToString("dd MMM yyyy")</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Meals</h2>
+                <div class="fs-5">@Model.MealsCount</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Total Daily Calories</h2>
+                <div class="fs-5">@Model.TotalCalories kcal</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">Meals</div>
+    <div class="card-body p-0">
+        @if (Model.Meals.Any())
+        {
+            <table class="table table-striped mb-0">
+                <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Recipe</th>
+                    <th>Calories</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var meal in Model.Meals)
+                {
+                    <tr>
+                        <td>@meal.MealType</td>
+                        <td>@meal.RecipeName</td>
+                        <td>@meal.Calories kcal</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="p-3 mb-0 text-muted">No meals added to this plan yet.</p>
+        }
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">Most Used Ingredients</div>
+    <div class="card-body">
+        @if (Model.MostUsedIngredients.Any())
+        {
+            <ul class="mb-0">
+                @foreach (var ingredient in Model.MostUsedIngredients)
+                {
+                    <li>@ingredient.Name (@ingredient.UsageCount uses)</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="mb-0 text-muted">No ingredient statistics available.</p>
+        }
+    </div>
+</div>
+
+<div class="d-flex gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+    <a asp-action="Index" class="btn btn-outline-primary">Back</a>
+</div>

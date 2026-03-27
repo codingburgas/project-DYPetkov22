@@ -1,0 +1,43 @@
+@model MealPlannerApp.Dtos.MealPlans.AddMealDto
+@{
+    ViewData["Title"] = "Add Meal";
+}
+
+<h1 class="h3 mb-3">Add Meal</h1>
+
+<form asp-action="AddMeal" method="post" class="card card-body">
+    <input type="hidden" asp-for="UserId" />
+    <input type="hidden" asp-for="WeekStart" />
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+    <div class="mb-3">
+        <label asp-for="MealPlanId" class="form-label">Day</label>
+        <select asp-for="MealPlanId" asp-items="ViewBag.MealPlans" class="form-select">
+            <option value="">Select day</option>
+        </select>
+        <span asp-validation-for="MealPlanId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="RecipeId" class="form-label">Recipe</label>
+        <select asp-for="RecipeId" asp-items="ViewBag.Recipes" class="form-select">
+            <option value="">Select recipe</option>
+        </select>
+        <span asp-validation-for="RecipeId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MealType" class="form-label"></label>
+        <select asp-for="MealType" asp-items="Html.GetEnumSelectList<MealType>()" class="form-select"></select>
+        <span asp-validation-for="MealType" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Add Meal</button>
+        <a asp-action="Weekly" asp-route-userId="@Model.UserId" asp-route-weekStart="@Model.WeekStart.ToString("yyyy-MM-dd")" class="btn btn-outline-secondary">Back</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

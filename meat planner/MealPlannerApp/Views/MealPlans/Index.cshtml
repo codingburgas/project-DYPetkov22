@@ -1,0 +1,42 @@
+@model IEnumerable<MealPlannerApp.Dtos.MealPlans.MealPlanDto>
+@{
+    ViewData["Title"] = "Meal Plans";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Meal Plans</h1>
+    <div class="d-flex gap-2">
+        <a asp-action="Weekly" class="btn btn-outline-primary">Weekly View</a>
+        <a asp-action="Create" class="btn btn-primary">Create Plan</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>User ID</th>
+            <th>Meals</th>
+            <th>Total Calories</th>
+            <th class="text-end">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var plan in Model)
+        {
+            <tr>
+                <td>@plan.Date.ToString("dd MMM yyyy")</td>
+                <td>@plan.UserId</td>
+                <td>@plan.MealsCount</td>
+                <td>@plan.TotalCalories kcal</td>
+                <td class="text-end">
+                    <a asp-action="Details" asp-route-id="@plan.Id" class="btn btn-sm btn-outline-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@plan.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@plan.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

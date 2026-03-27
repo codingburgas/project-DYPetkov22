@@ -1,0 +1,91 @@
+@model MealPlannerApp.Dtos.MealPlans.WeeklyMealPlannerDto
+@{
+    ViewData["Title"] = "Weekly Meal Planner";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h3 mb-1">Weekly Meal Planner</h1>
+        <p class="text-muted mb-0">@Model.WeekStart:dd MMM yyyy - @Model.WeekEnd:dd MMM yyyy</p>
+    </div>
+    <a asp-action="AddMeal" asp-route-userId="@Model.UserId" asp-route-weekStart="@Model.WeekStart.ToString("yyyy-MM-dd")" class="btn btn-primary">Add Meal</a>
+</div>
+
+<form asp-action="Weekly" method="get" class="card card-body mb-4">
+    <div class="row g-3 align-items-end">
+        <div class="col-md-3">
+            <label class="form-label">User ID</label>
+            <input type="number" name="userId" value="@Model.UserId" class="form-control" min="1" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Week Start</label>
+            <input type="date" name="weekStart" value="@Model.WeekStart.ToString("yyyy-MM-dd")" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-outline-primary w-100">Load Week</button>
+        </div>
+    </div>
+</form>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Total Weekly Calories</h2>
+                <div class="display-6">@Model.WeeklyTotalCalories</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Most Used Ingredients</h2>
+                @if (Model.MostUsedIngredients.Any())
+                {
+                    <ul class="mb-0">
+                        @foreach (var ingredient in Model.MostUsedIngredients)
+                        {
+                            <li>@ingredient.Name (@ingredient.UsageCount uses, @ingredient.TotalQuantityInGrams g)</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="mb-0 text-muted">No ingredient usage for this week.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3">
+    @foreach (var day in Model.Days)
+    {
+        <div class="col-lg-6">
+            <div class="card h-100">
+                <div class="card-header d-flex justify-content-between">
+                    <span>@day.Date:dddd, dd MMM</span>
+                    <span class="fw-semibold">@day.TotalCalories kcal</span>
+                </div>
+                <div class="card-body">
+                    @if (day.Meals.Any())
+                    {
+                        <ul class="list-group list-group-flush">
+                            @foreach (var meal in day.Meals)
+                            {
+                                <li class="list-group-item d-flex justify-content-between px-0">
+                                    <span><strong>@meal.MealType</strong>: @meal.RecipeName</span>
+                                    <span>@meal.Calories kcal</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted mb-0">No meals added.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

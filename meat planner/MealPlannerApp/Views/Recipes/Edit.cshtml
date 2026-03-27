@@ -1,0 +1,50 @@
+@model MealPlannerApp.Dtos.Recipes.RecipeDto
+@{
+    ViewData["Title"] = "Edit Recipe";
+}
+
+<h1 class="h3 mb-3">Edit Recipe</h1>
+
+<form asp-action="Edit" method="post" class="card card-body">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="CookingTime" class="form-label"></label>
+            <input asp-for="CookingTime" class="form-control" />
+            <span asp-validation-for="CookingTime" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Calories" class="form-label"></label>
+            <input asp-for="Calories" class="form-control" />
+            <span asp-validation-for="Calories" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-check mt-3">
+        <input asp-for="IsVegetarian" class="form-check-input" />
+        <label asp-for="IsVegetarian" class="form-check-label"></label>
+    </div>
+
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

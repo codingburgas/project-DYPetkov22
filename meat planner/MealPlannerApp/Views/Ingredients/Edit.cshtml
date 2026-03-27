@@ -1,0 +1,32 @@
+@model MealPlannerApp.Dtos.Ingredients.IngredientDto
+@{
+    ViewData["Title"] = "Edit Ingredient";
+}
+
+<h1 class="h3 mb-3">Edit Ingredient</h1>
+
+<form asp-action="Edit" method="post" class="card card-body">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CaloriesPer100g" class="form-label"></label>
+        <input asp-for="CaloriesPer100g" class="form-control" />
+        <span asp-validation-for="CaloriesPer100g" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
