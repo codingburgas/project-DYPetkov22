@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d812dde-78d9-43cb-b7c6-66ac8e4d29d9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/meat planner/.idea/.idea.WebApplication1/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/.idea/.idea.WebApplication1/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/bin/Debug/net8.0/MealPlannerApp.staticwebassets.runtime.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/MealPlannerApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/ref/MealPlannerApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/ref/MealPlannerApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/refint/MealPlannerApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/refint/MealPlannerApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rjimswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rjimswa.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rjsmrazor.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rjsmrazor.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rpswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/rpswa.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/staticwebassets.build.json.cache" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/staticwebassets.build.json.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/Debug/net8.0/staticwebassets.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/MealPlannerApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/MealPlannerApp.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/meat planner/MealPlannerApp/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Controllers/HomeController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Models/ErrorViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/Home/Index.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/Home/Privacy.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/Shared/Error.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/Shared/_Layout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/Shared/_Layout.cshtml.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/_ViewImports.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/Views/_ViewStart.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/WebApplication1.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/WebApplication1.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/WebApplication1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/WebApplication1.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/WebApplication1.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/WebApplication1.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/WebApplication1.staticwebassets.endpoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/WebApplication1.staticwebassets.runtime.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/bin/Debug/net10.0/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.GlobalUsings.g.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.MvcApplicationPartsAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.RazorAssemblyInfo.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.RazorAssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/WebApplication1.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/apphost.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/02b3ew86hc-{0}-c63t5i9ira-c63t5i9ira.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/0xggj6mqt4-{0}-r4e9w2rdcm-r4e9w2rdcm.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/1w70pd2vj5-{0}-sejl45xvog-sejl45xvog.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/22nk0q7zyd-{0}-4d85u1mtcx-4d85u1mtcx.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/2bzu4nmrz5-{0}-x0q3zqp4vz-x0q3zqp4vz.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/2l4zwu6ugx-{0}-ltid2c489k-ltid2c489k.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/38kd9iuyh0-{0}-fsbi9cje9m-fsbi9cje9m.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/3z7l7q08ws-{0}-xvp3kq03qx-xvp3kq03qx.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/4k9fog4zuf-{0}-rxsg74s51o-rxsg74s51o.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/556miamfr6-{0}-b9sayid5wm-b9sayid5wm.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/61mza39h5f-{0}-kbrnm935zg-kbrnm935zg.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/63370m31ll-{0}-hrwsygsryq-hrwsygsryq.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/68ngs9jdbw-{0}-9vr69e8ynj-9vr69e8ynj.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/714vlotvup-{0}-tmc1g35s3z-tmc1g35s3z.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/76j6y0ahj0-{0}-48y08845bh-48y08845bh.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/87bg1eosh3-{0}-jjsuc0puko-jjsuc0puko.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/88vu49wcx8-{0}-j5mq2jizvt-j5mq2jizvt.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/8agtyrngyq-{0}-mrlpezrjn3-mrlpezrjn3.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/8oziivtb3p-{0}-22vffe00uq-22vffe00uq.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/8yqr3kw3fy-{0}-t1cqhe9u97-t1cqhe9u97.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/932a20e7wx-{0}-03hjc8e09r-03hjc8e09r.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/a8i9xf6jk8-{0}-d6nrnj6jjx-d6nrnj6jjx.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/bjj292kkej-{0}-iovd86k7lj-iovd86k7lj.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/bri0a29iam-{0}-gk0pw8i4co-gk0pw8i4co.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/d7m40u5eqr-{0}-8vyfqsqgz1-8vyfqsqgz1.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/e5u30u3y7n-{0}-ft3s53vfgj-ft3s53vfgj.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/feq5xnm6hs-{0}-h1s4sie4z3-h1s4sie4z3.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/fzfizazizd-{0}-m9qm4tazc0-m9qm4tazc0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/g9hmsdfkzy-{0}-43atpzeawx-43atpzeawx.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/gvborvhl7p-{0}-4094rpi4f9-4094rpi4f9.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/h6bzfhvlo8-{0}-6pdc2jztkx-6pdc2jztkx.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/hnzlvl7w8f-{0}-aexeepp0ev-aexeepp0ev.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/hspsnr0hx9-{0}-ttgo8qnofa-ttgo8qnofa.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/htbxybmrlo-{0}-qesaa3a1fm-qesaa3a1fm.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/i9zyr2urqr-{0}-ausgxo2sd3-ausgxo2sd3.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/ikved1yotc-{0}-356vix0kms-356vix0kms.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/jkwovc64az-{0}-keugtjm085-keugtjm085.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/jnw8xw3sck-{0}-feqsqtfwhz-feqsqtfwhz.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/jpl7kqnqi2-{0}-zub09dkrxp-zub09dkrxp.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/kqmfh2qy2k-{0}-c2oey78nd0-c2oey78nd0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/l8on6opabk-{0}-v0zj4ognzu-v0zj4ognzu.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/m47f16re19-{0}-q9ht133ko3-q9ht133ko3.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/mdho1553a4-{0}-ee0r1s7dh0-ee0r1s7dh0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/osajasbl77-{0}-wl58j5mj3v-wl58j5mj3v.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/oxpc292ucw-{0}-83jwlth58m-83jwlth58m.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/plgi3vpdza-{0}-u9q1upor1n-u9q1upor1n.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/pwghj04u8c-{0}-feqsqtfwhz-feqsqtfwhz.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/r209juph27-{0}-d4r6k3f320-d4r6k3f320.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/r9rprwhrjq-{0}-pj5nd1wqec-pj5nd1wqec.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/sl8apya4kg-{0}-87fc7y1x7t-87fc7y1x7t.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/sld2hx1tei-{0}-mlv21k5csn-mlv21k5csn.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/sloa8893dl-{0}-c2jlpeoesf-c2jlpeoesf.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/sprw3euka5-{0}-ynyaa8k90p-ynyaa8k90p.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/t332e04noo-{0}-fvhpjtyr6v-fvhpjtyr6v.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/tok6iovubs-{0}-worgj0nhwm-worgj0nhwm.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/txvdwbw7vg-{0}-hd3gran6i8-hd3gran6i8.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/u3m5yo2x8f-{0}-61n19gt1b8-61n19gt1b8.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/w3u7ibosd4-{0}-xtxxf3hu2r-xtxxf3hu2r.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/wp1phq9d00-{0}-nvvlpmu67g-nvvlpmu67g.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/x21dcx3ow5-{0}-cosvhxvwiu-cosvhxvwiu.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/x666bo3qls-{0}-0j3bgjxly4-0j3bgjxly4.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/xamkvsmfnz-{0}-y7v9cxd14o-y7v9cxd14o.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/xuyszkibzw-{0}-jd9uben2k1-jd9uben2k1.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/compressed/ylv89oh22y-{0}-gye83jo8yx-gye83jo8yx.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/rbcswa.dswa.cache.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/ref/WebApplication1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/refint/WebApplication1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/rjimswa.dswa.cache.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/rjsmrazor.dswa.cache.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/rpswa.dswa.cache.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/scopedcss/bundle/WebApplication1.styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/scopedcss/projectbundle/WebApplication1.bundle.scp.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/staticwebassets.build.endpoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/staticwebassets.build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/staticwebassets.build.json.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/staticwebassets.development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/Debug/net10.0/swae.build.ex.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/WebApplication1.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/WebApplication1.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/rider.project.model.nuget.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/obj/rider.project.restore.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/js/site.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation/dist/additional-methods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation/dist/additional-methods.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation/dist/jquery.validate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery/dist/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery/dist/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery/dist/jquery.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery/dist/jquery.slim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery/dist/jquery.slim.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/meat planner/WebApplication1/wwwroot/lib/jquery/dist/jquery.slim.min.map" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="293" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/meat planner/MealPlannerApp/Program.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3BhOGk4xVL5qzgROg0SqdeaSroF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dean/project/project-DYPetkov22&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d812dde-78d9-43cb-b7c6-66ac8e4d29d9" name="Changes" comment="" />
+      <created>1774937742095</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774937742095</updated>
+      <workItem from="1774937743540" duration="2795000" />
+      <workItem from="1775209039407" duration="295000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
