@@ -1,3 +1,7 @@
+@{
+    var useWideLayout = ViewData["UseWideLayout"] as bool? == true;
+    var bodyClass = ViewData["BodyClass"] as string;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +10,9 @@
     <title>@ViewData["Title"] - MealPlannerApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
-<body>
+<body class="@bodyClass">
 <header>
     <nav class="navbar navbar-expand bg-dark shadow-sm">
         <div class="container">
@@ -21,6 +26,7 @@
                 {
                     <a class="btn btn-outline-light btn-sm" asp-controller="MealPlans" asp-action="Index">Meal Plans</a>
                     <a class="btn btn-outline-light btn-sm" asp-controller="MealPlans" asp-action="Weekly">Weekly Planner</a>
+                    <a class="btn btn-outline-light btn-sm" asp-controller="MealPlans" asp-action="History">Progress</a>
                     @if (User.IsInRole(ApplicationRoles.Admin))
                     {
                         <a class="btn btn-warning btn-sm" asp-controller="Recipes" asp-action="Moderation">Recipe Review</a>
@@ -45,14 +51,14 @@
     </nav>
 </header>
 
-<div class="container mt-4">
+<div class="@(useWideLayout ? "app-wide-layout" : "container mt-4")">
     @if (TempData["SuccessMessage"] is string successMessage)
     {
-        <div class="alert alert-success" role="alert">@successMessage</div>
+        <div class="alert alert-success @(useWideLayout ? "app-wide-layout__alert" : string.Empty)" role="alert">@successMessage</div>
     }
     @if (TempData["ErrorMessage"] is string errorMessage)
     {
-        <div class="alert alert-danger" role="alert">@errorMessage</div>
+        <div class="alert alert-danger @(useWideLayout ? "app-wide-layout__alert" : string.Empty)" role="alert">@errorMessage</div>
     }
     <main role="main">
         @RenderBody()

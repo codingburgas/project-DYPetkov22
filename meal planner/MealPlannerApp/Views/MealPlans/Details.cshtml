@@ -36,6 +36,17 @@
 </div>
 
 <div class="card mb-3">
+    <div class="card-body">
+        <h2 class="h6 text-muted">Daily Macros</h2>
+        <div class="row g-3">
+            <div class="col-md-4">Protein: <strong>@Model.TotalNutrition.ProteinGrams.ToString("0.#") g</strong></div>
+            <div class="col-md-4">Carbs: <strong>@Model.TotalNutrition.CarbsGrams.ToString("0.#") g</strong></div>
+            <div class="col-md-4">Fat: <strong>@Model.TotalNutrition.FatGrams.ToString("0.#") g</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
     <div class="card-header">Meals</div>
     <div class="card-body p-0">
         @if (Model.Meals.Any())
@@ -46,6 +57,7 @@
                     <th>Type</th>
                     <th>Recipe</th>
                     <th>Portion</th>
+                    <th>Macros</th>
                     <th>Calories</th>
                 </tr>
                 </thead>
@@ -54,8 +66,9 @@
                 {
                     <tr>
                         <td>@meal.MealType</td>
-                        <td>@meal.RecipeName</td>
-                        <td>x@meal.PortionMultiplier.ToString("0.##")</td>
+                        <td><a asp-controller="Recipes" asp-action="Details" asp-route-id="@meal.RecipeId">@meal.RecipeName</a></td>
+                        <td>Portion x @meal.PortionMultiplier.ToString("0.#")</td>
+                        <td>@meal.Nutrition.ProteinGrams.ToString("0.#")P / @meal.Nutrition.CarbsGrams.ToString("0.#")C / @meal.Nutrition.FatGrams.ToString("0.#")F</td>
                         <td>@meal.Calories kcal</td>
                     </tr>
                 }

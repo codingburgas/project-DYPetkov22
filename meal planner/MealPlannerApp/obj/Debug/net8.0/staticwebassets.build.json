@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OZuy9EvQrqWSaywtT8aDRJVLjrPLy6VqE0xDZe37+NM=",
+  "Hash": "fki8zCltQVKK9qhbrOpAw/Ocwt5zoPh6/v/mfaRS1kk=",
   "Source": "MealPlannerApp",
   "BasePath": "_content/MealPlannerApp",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\projects\\project-DYPetkov22\\meal planner\\MealPlannerApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MealPlannerApp.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\projects\\project-DYPetkov22\\meal planner\\MealPlannerApp\\wwwroot\\css\\meal-planner-dashboard.css",
+      "SourceId": "MealPlannerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\projects\\project-DYPetkov22\\meal planner\\MealPlannerApp\\wwwroot\\",
+      "BasePath": "_content/MealPlannerApp",
+      "RelativePath": "css/meal-planner-dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\meal-planner-dashboard.css"
     },
     {
       "Identity": "C:\\projects\\project-DYPetkov22\\meal planner\\MealPlannerApp\\wwwroot\\css\\site.css",

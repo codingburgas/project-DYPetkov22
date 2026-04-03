@@ -1,0 +1,86 @@
+@model MealPlannerApp.Dtos.MealPlans.MealPlanHistoryDto
+@{
+    ViewData["Title"] = "Progress History";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h3 mb-1">Progress History</h1>
+        <p class="text-muted mb-0">Your recent weekly calories, macros, and meal consistency.</p>
+    </div>
+    <a asp-action="Weekly" class="btn btn-outline-primary">Back To Planner</a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Average Daily Calories</h2>
+                <div class="fs-4">@Model.AverageDailyCalories</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Average Protein</h2>
+                <div class="fs-4">@Model.AverageDailyNutrition.ProteinGrams.ToString("0.#") g</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Average Carbs</h2>
+                <div class="fs-4">@Model.AverageDailyNutrition.CarbsGrams.ToString("0.#") g</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h6 text-muted">Average Fat</h2>
+                <div class="fs-4">@Model.AverageDailyNutrition.FatGrams.ToString("0.#") g</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        @if (Model.Weeks.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Meals</th>
+                        <th>Active Days</th>
+                        <th>Total Calories</th>
+                        <th>Avg / Day</th>
+                        <th>Macros</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var week in Model.Weeks)
+                    {
+                        <tr>
+                            <td>@week.WeekStart.ToString("dd MMM") - @week.WeekEnd.ToString("dd MMM")</td>
+                            <td>@week.MealsCount</td>
+                            <td>@week.DaysWithMeals / 7</td>
+                            <td>@week.TotalCalories kcal</td>
+                            <td>@week.AverageDailyCalories kcal</td>
+                            <td>@week.AverageDailyNutrition.ProteinGrams.ToString("0.#")P / @week.AverageDailyNutrition.CarbsGrams.ToString("0.#")C / @week.AverageDailyNutrition.FatGrams.ToString("0.#")F</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="p-3 mb-0 text-muted">Generate or add some weeks first to see your history here.</p>
+        }
+    </div>
+</div>

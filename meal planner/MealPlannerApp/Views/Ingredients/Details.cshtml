@@ -11,6 +11,12 @@
         <dl class="row mb-0">
             <dt class="col-sm-4">Calories / 100g</dt>
             <dd class="col-sm-8">@Model.CaloriesPer100g</dd>
+            <dt class="col-sm-4">Protein / 100g</dt>
+            <dd class="col-sm-8">@Model.ProteinPer100g.ToString("0.#") g</dd>
+            <dt class="col-sm-4">Carbs / 100g</dt>
+            <dd class="col-sm-8">@Model.CarbsPer100g.ToString("0.#") g</dd>
+            <dt class="col-sm-4">Fat / 100g</dt>
+            <dd class="col-sm-8">@Model.FatPer100g.ToString("0.#") g</dd>
         </dl>
     </div>
 </div>

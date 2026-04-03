@@ -1,171 +1,568 @@
 @model MealPlannerApp.Dtos.MealPlans.WeeklyMealPlannerDto
 @{
-    ViewData["Title"] = "Weekly Meal Planner";
+    ViewData["Title"] = "Meal Planner Dashboard";
+    ViewData["UseWideLayout"] = true;
+    ViewData["BodyClass"] = "dashboard-body";
+
+    var dashboardDay = Model.Days
+        .FirstOrDefault(day => day.Date.Date == Model.SelectedDate.Date)
+        ?? Model.Days.First();
+
+    var breakfastMeal = dashboardDay.Meals.FirstOrDefault(meal => meal.MealType == "Breakfast");
+    var lunchMeal = dashboardDay.Meals.FirstOrDefault(meal => meal.MealType == "Lunch");
+    var dinnerMeal = dashboardDay.Meals.FirstOrDefault(meal => meal.MealType == "Dinner");
+    var snacksMeal = dashboardDay.Meals.Skip(3).FirstOrDefault();
+    var dayTargetCalories = Model.DailyNutritionTarget.Calories;
+    var macroCalories = (Model.GeneratePlan.ProteinTargetGrams * 4.0)
+        + (Model.GeneratePlan.CarbsTargetGrams * 4.0)
+        + (Model.GeneratePlan.FatTargetGrams * 9.0);
+    var carbShare = macroCalories <= 0 ? 0 : (Model.GeneratePlan.CarbsTargetGrams * 4.0) / macroCalories;
+    var fatShare = macroCalories <= 0 ? 0 : (Model.GeneratePlan.FatTargetGrams * 9.0) / macroCalories;
+    var initialDietType = carbShare < 0.15 && fatShare > 0.5
+        ? "Keto"
+        : carbShare > 0.5 && fatShare < 0.3
+            ? "Vegan"
+            : "Balanced";
 }
 
-<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
-    <div>
-        <h1 class="h3 mb-1">Weekly Meal Planner</h1>
-        <p class="text-muted mb-0">@Model.WeekStart:dd MMM yyyy - @Model.WeekEnd:dd MMM yyyy</p>
-    </div>
-    <div class="d-flex gap-2">
-        <a asp-action="AddMeal" asp-route-weekStart="@Model.WeekStart.ToString("yyyy-MM-dd")" class="btn btn-primary">Add Meal</a>
-        <a asp-controller="MealPlanTemplates" asp-action="CreateFromWeek" asp-route-weekStart="@Model.WeekStart.ToString("yyyy-MM-dd")" class="btn btn-outline-primary">Turn Week Into Template</a>
-    </div>
-</div>
-
-@if (!ViewData.ModelState.IsValid)
-{
-    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-}
-
-<div class="row g-4 mb-4">
-    <div class="col-lg-7">
-        <div class="card h-100">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
-                    <div>
-                        <h2 class="h5 mb-1">Starter Plans for Beginners</h2>
-                        <p class="text-muted mb-0">Pick a ready-made week and the portions will scale from a 70 kg reference plan.</p>
-                    </div>
-                    <span class="badge text-bg-light">3 meals per day</span>
-                </div>
-
-                @if (Model.PresetPlans.Any())
-                {
-                    <form asp-action="StartPreset" method="post">
-                        <input asp-for="StartPresetPlan.WeekStart" type="hidden" />
-
-                        <div class="row g-3 mb-3">
-                            @for (var index = 0; index < Model.PresetPlans.Count; index++)
-                            {
-                                var plan = Model.PresetPlans.ElementAt(index);
-                                var radioId = $"preset-{plan.Key}";
-                                <div class="col-md-6">
-                                    <label class="card h-100 border-2 @(Model.StartPresetPlan.PresetKey == plan.Key ? "border-primary" : "border-light")" for="@radioId">
-                                        <div class="card-body">
-                                            <div class="form-check mb-2">
-                                                <input asp-for="StartPresetPlan.PresetKey" class="form-check-input" type="radio" value="@plan.Key" id="@radioId" />
-                                                <span class="form-check-label fw-semibold">@plan.Name</span>
-                                            </div>
-                                            <p class="small text-muted mb-2">@plan.Description</p>
-                                            <div class="small mb-1">Around <strong>@plan.AverageDailyCaloriesAtReferenceWeight kcal/day</strong> at 70 kg.</div>
-                                            <div class="small text-muted">Recipes: @string.Join(", ", plan.FeaturedRecipes)</div>
-                                            @if (plan.IsVegetarian)
-                                            {
-                                                <div class="mt-2"><span class="badge text-bg-success">Vegetarian</span></div>
-                                            }
-                                        </div>
-                                    </label>
-                                </div>
-                            }
-                        </div>
-
-                        <div class="row g-3 align-items-end">
-                            <div class="col-md-4">
-                                <label asp-for="StartPresetPlan.BodyWeightKg" class="form-label"></label>
-                                <input asp-for="StartPresetPlan.BodyWeightKg" class="form-control" min="40" max="180" step="0.1" />
-                                <span asp-validation-for="StartPresetPlan.BodyWeightKg" class="text-danger"></span>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="small text-muted mb-2">This replaces the selected week in your account with the starter plan meals and scaled portions.</div>
-                                <button type="submit" class="btn btn-success">Start Selected Plan</button>
-                            </div>
-                        </div>
-                    </form>
-                }
-                else
-                {
-                    <p class="mb-0 text-muted">Starter plans are unavailable because one or more required recipes are missing.</p>
-                }
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-5">
-        <form asp-action="Weekly" method="get" class="card h-100">
-            <div class="card-body">
-                <h2 class="h5 mb-3">Load a Week</h2>
-                <div class="row g-3 align-items-end">
-                    <div class="col-12">
-                        <label class="form-label">Week Start</label>
-                        <input type="date" name="weekStart" value="@Model.WeekStart.ToString("yyyy-MM-dd")" class="form-control" />
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-outline-primary w-100">Load Week</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="row g-3 mb-4">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="h6 text-muted">Total Weekly Calories</h2>
-                <div class="display-6">@Model.WeeklyTotalCalories</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="h6 text-muted">Most Used Ingredients</h2>
-                @if (Model.MostUsedIngredients.Any())
-                {
-                    <ul class="mb-0">
-                        @foreach (var ingredient in Model.MostUsedIngredients)
-                        {
-                            <li>@ingredient.Name (@ingredient.UsageCount uses, @ingredient.TotalQuantityInGrams g)</li>
-                        }
-                    </ul>
-                }
-                else
-                {
-                    <p class="mb-0 text-muted">No ingredient usage for this week.</p>
-                }
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row g-3">
-    @foreach (var day in Model.Days)
+@functions {
+    private static string GetMealName(WeeklyMealItemDto? meal, string emptyText)
     {
-        <div class="col-lg-6">
-            <div class="card h-100">
-                <div class="card-header d-flex justify-content-between">
-                    <span>@day.Date:dddd, dd MMM</span>
-                    <span class="fw-semibold">@day.TotalCalories kcal</span>
-                </div>
-                <div class="card-body">
-                    @if (day.Meals.Any())
-                    {
-                        <ul class="list-group list-group-flush">
-                            @foreach (var meal in day.Meals)
+        return meal?.RecipeName ?? emptyText;
+    }
+
+    private static int GetMealCalories(WeeklyMealItemDto? meal)
+    {
+        return meal?.Calories ?? 0;
+    }
+
+    private static NutritionSummaryDto GetMealNutrition(WeeklyMealItemDto? meal)
+    {
+        return meal?.Nutrition ?? new NutritionSummaryDto();
+    }
+}
+
+<section class="meal-dashboard">
+    <aside class="meal-dashboard__sidebar">
+        <div class="planner-brand">
+            <p class="planner-brand__eyebrow">Smart Planner</p>
+            <h1 class="planner-brand__title">Meal Planner</h1>
+            <p class="planner-brand__copy">
+                Build a clean daily plan, shape it with diet presets, and keep your real targets in the advanced panel.
+            </p>
+        </div>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3"></div>
+        }
+
+        <form asp-action="Generate" method="post" id="dashboardPlannerForm" class="sidebar-form">
+            <input asp-for="GeneratePlan.WeekStart" type="hidden" />
+            <input type="hidden" name="selectedDate" value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
+
+            <label class="sidebar-form__group">
+                <span class="sidebar-form__label">Calories</span>
+                <input id="dashboardCaloriesTarget" type="number" class="sidebar-form__input" value="@dayTargetCalories" min="1200" max="4500" step="50" />
+                <span class="sidebar-form__hint">This drives your macro targets when you pick a diet preset.</span>
+            </label>
+
+            <label class="sidebar-form__group">
+                <span class="sidebar-form__label">Diet Type</span>
+                <select id="dashboardDietType" class="sidebar-form__select">
+                    <option value="Balanced" selected="@(initialDietType == "Balanced" ? "selected" : null)">Balanced</option>
+                    <option value="Keto" selected="@(initialDietType == "Keto" ? "selected" : null)">Keto</option>
+                    <option value="Vegan" selected="@(initialDietType == "Vegan" ? "selected" : null)">Vegan</option>
+                </select>
+                <span class="sidebar-form__hint">Balanced favors even macros, Keto lowers carbs, Vegan shifts higher-carb plant-style targets.</span>
+            </label>
+
+            <label class="sidebar-form__group">
+                <span class="sidebar-form__label">Meals Per Day</span>
+                <select asp-for="GeneratePlan.MealsPerDay" class="sidebar-form__select">
+                    <option value="1">1 meal</option>
+                    <option value="2">2 meals</option>
+                    <option value="3">3 meals</option>
+                </select>
+                <span asp-validation-for="GeneratePlan.MealsPerDay" class="text-danger"></span>
+            </label>
+
+            <button type="submit" class="btn-dashboard">Generate Plan</button>
+
+            <details class="sidebar-form__details">
+                <summary>Advanced Targets & Restrictions</summary>
+
+                <div class="sidebar-form__details-grid">
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Body Weight (kg)</span>
+                        <input asp-for="GeneratePlan.BodyWeightKg" class="sidebar-form__input" min="40" max="180" step="0.1" />
+                        <span asp-validation-for="GeneratePlan.BodyWeightKg" class="text-danger"></span>
+                    </label>
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Protein Target (g/day)</span>
+                        <input asp-for="GeneratePlan.ProteinTargetGrams" class="sidebar-form__input" min="40" max="300" step="0.1" />
+                        <span asp-validation-for="GeneratePlan.ProteinTargetGrams" class="text-danger"></span>
+                    </label>
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Carbs Target (g/day)</span>
+                        <input asp-for="GeneratePlan.CarbsTargetGrams" class="sidebar-form__input" min="20" max="500" step="0.1" />
+                        <span asp-validation-for="GeneratePlan.CarbsTargetGrams" class="text-danger"></span>
+                    </label>
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Fat Target (g/day)</span>
+                        <input asp-for="GeneratePlan.FatTargetGrams" class="sidebar-form__input" min="20" max="200" step="0.1" />
+                        <span asp-validation-for="GeneratePlan.FatTargetGrams" class="text-danger"></span>
+                    </label>
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Foods You Do Not Eat</span>
+                        <textarea asp-for="GeneratePlan.ExcludedFoods" class="sidebar-form__textarea" placeholder="salmon, avocado, onion"></textarea>
+                        <span class="sidebar-form__hint">Separate foods with commas or new lines.</span>
+                        <span asp-validation-for="GeneratePlan.ExcludedFoods" class="text-danger"></span>
+                    </label>
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Excluded Ingredients</span>
+                        <select asp-for="GeneratePlan.ExcludedIngredientIds" class="sidebar-form__multiselect" multiple size="7">
+                            @foreach (var ingredient in Model.AvailableIngredients)
                             {
-                                <li class="list-group-item d-flex justify-content-between align-items-start px-0">
-                                    <div>
-                                        <div><strong>@meal.MealType</strong>: @meal.RecipeName</div>
-                                        <div class="small text-muted">Portion x@meal.PortionMultiplier.ToString("0.##")</div>
-                                    </div>
-                                    <span>@meal.Calories kcal</span>
-                                </li>
+                                <option value="@ingredient.Id" selected="@(Model.GeneratePlan.ExcludedIngredientIds.Contains(ingredient.Id) ? "selected" : null)">@ingredient.Name</option>
                             }
-                        </ul>
+                        </select>
+                        <span class="sidebar-form__hint">Planner recipes using these ingredients are skipped.</span>
+                    </label>
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Allergy Ingredients</span>
+                        <select asp-for="GeneratePlan.AllergyIngredientIds" class="sidebar-form__multiselect" multiple size="7">
+                            @foreach (var ingredient in Model.AvailableIngredients)
+                            {
+                                <option value="@ingredient.Id" selected="@(Model.GeneratePlan.AllergyIngredientIds.Contains(ingredient.Id) ? "selected" : null)">@ingredient.Name</option>
+                            }
+                        </select>
+                        <span class="sidebar-form__hint">These act as hard blocks for generated and shared plans.</span>
+                    </label>
+                </div>
+            </details>
+        </form>
+
+        <section class="sidebar-section">
+            <p class="sidebar-section__eyebrow">Selected Week</p>
+            <form asp-action="Weekly" method="get">
+                <label class="sidebar-form__group">
+                    <span class="sidebar-form__label">Week Start</span>
+                    <input type="date" name="weekStart" value="@Model.WeekStart.ToString("yyyy-MM-dd")" class="sidebar-section__input" />
+                </label>
+                <div class="sidebar-actions">
+                    <button type="submit" class="btn-dashboard-ghost">Load Week</button>
+                    <a asp-action="History" class="btn-dashboard-ghost">Progress</a>
+                </div>
+            </form>
+        </section>
+
+        @if (Model.PresetPlans.Any())
+        {
+            <section class="sidebar-section">
+                <p class="sidebar-section__eyebrow">Starter Plan</p>
+                <form asp-action="StartPreset" method="post">
+                    <input asp-for="StartPresetPlan.WeekStart" type="hidden" />
+                    <input type="hidden" name="selectedDate" value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Plan</span>
+                        <select asp-for="StartPresetPlan.PresetKey" class="sidebar-form__select">
+                            @foreach (var plan in Model.PresetPlans)
+                            {
+                                <option value="@plan.Key" selected="@(Model.StartPresetPlan.PresetKey == plan.Key ? "selected" : null)">@plan.Name</option>
+                            }
+                        </select>
+                    </label>
+
+                    <label class="sidebar-form__group">
+                        <span class="sidebar-form__label">Reference Weight (kg)</span>
+                        <input asp-for="StartPresetPlan.BodyWeightKg" class="sidebar-form__input" min="40" max="180" step="0.1" />
+                        <span asp-validation-for="StartPresetPlan.BodyWeightKg" class="text-danger"></span>
+                    </label>
+
+                    <button type="submit" class="btn-dashboard-ghost">Start Selected Plan</button>
+                </form>
+            </section>
+        }
+    </aside>
+
+    <div class="meal-dashboard__main">
+        <header class="dashboard-header">
+            <div>
+                <p class="dashboard-header__eyebrow">@dashboardDay.Date.ToString("dddd, dd MMM yyyy")</p>
+                <h2 class="dashboard-header__title">Selected Day Meal Plan</h2>
+                <p class="dashboard-header__copy">
+                    Clean cards for the selected day, with quick swaps and a grocery snapshot for the full week.
+                </p>
+            </div>
+            <div class="dashboard-link-row">
+                <button type="submit" class="btn-dashboard-outline" form="dashboardPlannerForm">Regenerate</button>
+                <a asp-action="AddMeal" asp-route-weekStart="@Model.WeekStart.ToString("yyyy-MM-dd")" class="btn-dashboard-outline">Add Meal</a>
+                <a asp-controller="MealPlanTemplates" asp-action="CreateFromWeek" asp-route-weekStart="@Model.WeekStart.ToString("yyyy-MM-dd")" class="btn-dashboard-outline">Share Week</a>
+            </div>
+        </header>
+
+        <section class="dashboard-summary">
+            <article class="dashboard-summary__card">
+                <span class="dashboard-summary__label">Today</span>
+                <span class="dashboard-summary__value">@dashboardDay.TotalCalories</span>
+                <span class="dashboard-summary__meta">kcal planned for @dashboardDay.Date.ToString("ddd")</span>
+            </article>
+            <article class="dashboard-summary__card">
+                <span class="dashboard-summary__label">Daily Target</span>
+                <span class="dashboard-summary__value">@Model.DailyNutritionTarget.Calories</span>
+                <span class="dashboard-summary__meta">@Model.DailyNutritionTarget.ProteinGrams.ToString("0.#")P / @Model.DailyNutritionTarget.CarbsGrams.ToString("0.#")C / @Model.DailyNutritionTarget.FatGrams.ToString("0.#")F</span>
+            </article>
+            <article class="dashboard-summary__card">
+                <span class="dashboard-summary__label">Week Range</span>
+                <span class="dashboard-summary__value">@Model.WeekStart.ToString("dd")-@Model.WeekEnd.ToString("dd")</span>
+                <span class="dashboard-summary__meta">@Model.WeekStart.ToString("MMM") - @Model.WeekEnd.ToString("MMM yyyy")</span>
+            </article>
+        </section>
+
+        <section class="dashboard-day-strip">
+            @foreach (var day in Model.Days)
+            {
+                var isActive = day.Date.Date == Model.SelectedDate.Date;
+                <a asp-action="Weekly"
+                   asp-route-weekStart="@Model.WeekStart.ToString("yyyy-MM-dd")"
+                   asp-route-selectedDate="@day.Date.ToString("yyyy-MM-dd")"
+                   class="dashboard-day-chip @(isActive ? "dashboard-day-chip--active" : string.Empty)">
+                    <span class="dashboard-day-chip__day">@day.Date.ToString("ddd")</span>
+                    <span class="dashboard-day-chip__date">@day.Date.ToString("dd MMM")</span>
+                    <span class="dashboard-day-chip__meta">@day.TotalCalories kcal</span>
+                </a>
+            }
+        </section>
+
+        <section class="meal-grid">
+            <article class="meal-card meal-card--breakfast">
+                <div class="meal-card__top">
+                    <span class="meal-card__label">Breakfast</span>
+                    <span class="meal-card__calories">@GetMealCalories(breakfastMeal) kcal</span>
+                </div>
+                <h3 class="meal-card__title">@GetMealName(breakfastMeal, "No breakfast planned")</h3>
+                <p class="meal-card__name">
+                    @if (breakfastMeal is not null)
+                    {
+                        <a asp-controller="Recipes" asp-action="Details" asp-route-id="@breakfastMeal.RecipeId">@breakfastMeal.RecipeName</a>
                     }
                     else
                     {
-                        <p class="text-muted mb-0">No meals added.</p>
+                        <span>Generate the plan or add a meal manually to fill this slot.</span>
+                    }
+                </p>
+                <div class="meal-card__macros">
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Protein</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(breakfastMeal).ProteinGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Carbs</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(breakfastMeal).CarbsGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Fat</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(breakfastMeal).FatGrams.ToString("0.#") g</span>
+                    </div>
+                </div>
+                <div class="meal-card__footer">
+                    <span class="meal-card__portion">Portion x @(breakfastMeal?.PortionMultiplier.ToString("0.#") ?? "0")</span>
+                    @if (breakfastMeal is not null)
+                    {
+                        <form asp-action="SwapMeal" method="post">
+                            <input type="hidden" name="mealId" value="@breakfastMeal.MealId" />
+                            <input type="hidden" name="weekStart" value="@Model.WeekStart.ToString("yyyy-MM-dd")" />
+                            <input type="hidden" name="selectedDate" value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
+                            <button type="submit" class="btn-dashboard-small">Swap</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn-dashboard-small" disabled>Swap</button>
                     }
                 </div>
+            </article>
+
+            <article class="meal-card meal-card--lunch">
+                <div class="meal-card__top">
+                    <span class="meal-card__label">Lunch</span>
+                    <span class="meal-card__calories">@GetMealCalories(lunchMeal) kcal</span>
+                </div>
+                <h3 class="meal-card__title">@GetMealName(lunchMeal, "No lunch planned")</h3>
+                <p class="meal-card__name">
+                    @if (lunchMeal is not null)
+                    {
+                        <a asp-controller="Recipes" asp-action="Details" asp-route-id="@lunchMeal.RecipeId">@lunchMeal.RecipeName</a>
+                    }
+                    else
+                    {
+                        <span>Generate the plan or add a meal manually to fill this slot.</span>
+                    }
+                </p>
+                <div class="meal-card__macros">
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Protein</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(lunchMeal).ProteinGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Carbs</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(lunchMeal).CarbsGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Fat</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(lunchMeal).FatGrams.ToString("0.#") g</span>
+                    </div>
+                </div>
+                <div class="meal-card__footer">
+                    <span class="meal-card__portion">Portion x @(lunchMeal?.PortionMultiplier.ToString("0.#") ?? "0")</span>
+                    @if (lunchMeal is not null)
+                    {
+                        <form asp-action="SwapMeal" method="post">
+                            <input type="hidden" name="mealId" value="@lunchMeal.MealId" />
+                            <input type="hidden" name="weekStart" value="@Model.WeekStart.ToString("yyyy-MM-dd")" />
+                            <input type="hidden" name="selectedDate" value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
+                            <button type="submit" class="btn-dashboard-small">Swap</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn-dashboard-small" disabled>Swap</button>
+                    }
+                </div>
+            </article>
+
+            <article class="meal-card meal-card--dinner">
+                <div class="meal-card__top">
+                    <span class="meal-card__label">Dinner</span>
+                    <span class="meal-card__calories">@GetMealCalories(dinnerMeal) kcal</span>
+                </div>
+                <h3 class="meal-card__title">@GetMealName(dinnerMeal, "No dinner planned")</h3>
+                <p class="meal-card__name">
+                    @if (dinnerMeal is not null)
+                    {
+                        <a asp-controller="Recipes" asp-action="Details" asp-route-id="@dinnerMeal.RecipeId">@dinnerMeal.RecipeName</a>
+                    }
+                    else
+                    {
+                        <span>Generate the plan or add a meal manually to fill this slot.</span>
+                    }
+                </p>
+                <div class="meal-card__macros">
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Protein</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(dinnerMeal).ProteinGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Carbs</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(dinnerMeal).CarbsGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Fat</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(dinnerMeal).FatGrams.ToString("0.#") g</span>
+                    </div>
+                </div>
+                <div class="meal-card__footer">
+                    <span class="meal-card__portion">Portion x @(dinnerMeal?.PortionMultiplier.ToString("0.#") ?? "0")</span>
+                    @if (dinnerMeal is not null)
+                    {
+                        <form asp-action="SwapMeal" method="post">
+                            <input type="hidden" name="mealId" value="@dinnerMeal.MealId" />
+                            <input type="hidden" name="weekStart" value="@Model.WeekStart.ToString("yyyy-MM-dd")" />
+                            <input type="hidden" name="selectedDate" value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
+                            <button type="submit" class="btn-dashboard-small">Swap</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn-dashboard-small" disabled>Swap</button>
+                    }
+                </div>
+            </article>
+
+            <article class="meal-card meal-card--snack">
+                <div class="meal-card__top">
+                    <span class="meal-card__label">Snacks</span>
+                    <span class="meal-card__calories">@GetMealCalories(snacksMeal) kcal</span>
+                </div>
+                <h3 class="meal-card__title">@GetMealName(snacksMeal, "No snacks planned")</h3>
+                <p class="meal-card__name">
+                    @if (snacksMeal is not null)
+                    {
+                        <a asp-controller="Recipes" asp-action="Details" asp-route-id="@snacksMeal.RecipeId">@snacksMeal.RecipeName</a>
+                    }
+                    else
+                    {
+                        <span>Your current planner supports breakfast, lunch, and dinner. Use this card as a visual extra slot.</span>
+                    }
+                </p>
+                <div class="meal-card__macros">
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Protein</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(snacksMeal).ProteinGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Carbs</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(snacksMeal).CarbsGrams.ToString("0.#") g</span>
+                    </div>
+                    <div class="meal-card__macro">
+                        <span class="meal-card__macro-label">Fat</span>
+                        <span class="meal-card__macro-value">@GetMealNutrition(snacksMeal).FatGrams.ToString("0.#") g</span>
+                    </div>
+                </div>
+                <div class="meal-card__footer">
+                    <span class="meal-card__portion">Portion x @(snacksMeal?.PortionMultiplier.ToString("0.#") ?? "0")</span>
+                    @if (snacksMeal is not null)
+                    {
+                        <form asp-action="SwapMeal" method="post">
+                            <input type="hidden" name="mealId" value="@snacksMeal.MealId" />
+                            <input type="hidden" name="weekStart" value="@Model.WeekStart.ToString("yyyy-MM-dd")" />
+                            <input type="hidden" name="selectedDate" value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
+                            <button type="submit" class="btn-dashboard-small">Swap</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn-dashboard-small" disabled>Swap</button>
+                    }
+                </div>
+            </article>
+        </section>
+
+        <section class="grocery-panel">
+            <div class="grocery-panel__heading">
+                <div>
+                    <p class="grocery-panel__eyebrow">Ready To Shop</p>
+                    <h2 class="grocery-panel__title">Grocery List</h2>
+                    <p class="grocery-panel__copy">Top ingredients pulled from the loaded week so your next shop is quick.</p>
+                </div>
+                <span class="grocery-panel__pill">@Model.MostUsedIngredients.Count items</span>
             </div>
-        </div>
-    }
-</div>
+
+            @if (Model.MostUsedIngredients.Any())
+            {
+                <ul class="grocery-list">
+                    @foreach (var ingredient in Model.MostUsedIngredients)
+                    {
+                        <li class="grocery-item">
+                            <div>
+                                <div class="grocery-item__name">@ingredient.Name</div>
+                                <div class="grocery-item__meta">@ingredient.UsageCount uses this week</div>
+                            </div>
+                            <span class="grocery-item__qty">@ingredient.TotalQuantityInGrams g</span>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="dashboard-empty">Generate a week first and your grocery list will appear here.</p>
+            }
+        </section>
+
+        @if (Model.PresetPlans.Any())
+        {
+            <section class="starter-panel">
+                <div class="starter-panel__heading">
+                    <div>
+                        <p class="grocery-panel__eyebrow">Quick Start</p>
+                        <h2 class="starter-panel__title">Starter Plans</h2>
+                        <p class="starter-panel__copy">Use a ready-made week if you want a faster starting point before customizing meals.</p>
+                    </div>
+                </div>
+
+                <form asp-action="StartPreset" method="post">
+                    <input asp-for="StartPresetPlan.WeekStart" type="hidden" />
+                    <input type="hidden" name="selectedDate" value="@Model.SelectedDate.ToString("yyyy-MM-dd")" />
+
+                    <div class="starter-plan-grid">
+                        @for (var index = 0; index < Model.PresetPlans.Count; index++)
+                        {
+                            var plan = Model.PresetPlans.ElementAt(index);
+                            var radioId = $"dashboard-starter-{plan.Key}";
+                            <label class="starter-plan-card" for="@radioId">
+                                <input asp-for="StartPresetPlan.PresetKey" class="starter-plan-card__input" type="radio" value="@plan.Key" id="@radioId" />
+                                <span class="starter-plan-card__content">
+                                    <span class="starter-plan-card__title">@plan.Name</span>
+                                    <span class="starter-plan-card__copy">@plan.Description</span>
+                                    <span class="starter-plan-card__meta">@plan.AverageDailyCaloriesAtReferenceWeight kcal/day at 70 kg</span>
+                                </span>
+                            </label>
+                        }
+                    </div>
+
+                    <div class="starter-panel__footer">
+                        <label class="starter-panel__weight">
+                            <span class="sidebar-form__label text-dark">Reference Weight (kg)</span>
+                            <input asp-for="StartPresetPlan.BodyWeightKg" class="sidebar-form__input text-dark border-light bg-white" min="40" max="180" step="0.1" />
+                        </label>
+                        <button type="submit" class="btn-dashboard">Start Selected Plan</button>
+                    </div>
+                </form>
+            </section>
+        }
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/meal-planner-dashboard.css" asp-append-version="true" />
+}
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        (() => {
+            const caloriesInput = document.getElementById("dashboardCaloriesTarget");
+            const dietTypeSelect = document.getElementById("dashboardDietType");
+            const proteinInput = document.getElementById("GeneratePlan_ProteinTargetGrams");
+            const carbsInput = document.getElementById("GeneratePlan_CarbsTargetGrams");
+            const fatInput = document.getElementById("GeneratePlan_FatTargetGrams");
+
+            if (!caloriesInput || !dietTypeSelect || !proteinInput || !carbsInput || !fatInput) {
+                return;
+            }
+
+            const syncCaloriesFromMacros = () => {
+                const protein = Number.parseFloat(proteinInput.value) || 0;
+                const carbs = Number.parseFloat(carbsInput.value) || 0;
+                const fat = Number.parseFloat(fatInput.value) || 0;
+                const calories = Math.round((protein * 4) + (carbs * 4) + (fat * 9));
+                caloriesInput.value = calories > 0 ? calories : "";
+            };
+
+            const applyDietPreset = () => {
+                const calories = Math.max(Number.parseFloat(caloriesInput.value) || 0, 1200);
+                let proteinRatio = 0.30;
+                let carbsRatio = 0.40;
+                let fatRatio = 0.30;
+
+                if (dietTypeSelect.value === "Keto") {
+                    proteinRatio = 0.30;
+                    carbsRatio = 0.10;
+                    fatRatio = 0.60;
+                } else if (dietTypeSelect.value === "Vegan") {
+                    proteinRatio = 0.22;
+                    carbsRatio = 0.56;
+                    fatRatio = 0.22;
+                }
+
+                proteinInput.value = ((calories * proteinRatio) / 4).toFixed(1);
+                carbsInput.value = ((calories * carbsRatio) / 4).toFixed(1);
+                fatInput.value = ((calories * fatRatio) / 9).toFixed(1);
+            };
+
+            dietTypeSelect.addEventListener("change", applyDietPreset);
+            caloriesInput.addEventListener("change", applyDietPreset);
+            proteinInput.addEventListener("change", syncCaloriesFromMacros);
+            carbsInput.addEventListener("change", syncCaloriesFromMacros);
+            fatInput.addEventListener("change", syncCaloriesFromMacros);
+        })();
+    </script>
 }

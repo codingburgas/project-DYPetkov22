@@ -129,7 +129,10 @@ public class IngredientsController : Controller
         {
             Id = ingredient.Id,
             Name = ingredient.Name,
-            CaloriesPer100g = ingredient.CaloriesPer100g
+            CaloriesPer100g = ingredient.CaloriesPer100g,
+            ProteinPer100g = ingredient.ProteinPer100g,
+            CarbsPer100g = ingredient.CarbsPer100g,
+            FatPer100g = ingredient.FatPer100g
         };
     }
 
@@ -139,7 +142,10 @@ public class IngredientsController : Controller
         {
             Id = dto.Id,
             Name = dto.Name,
-            CaloriesPer100g = dto.CaloriesPer100g
+            CaloriesPer100g = dto.CaloriesPer100g,
+            ProteinPer100g = dto.ProteinPer100g,
+            CarbsPer100g = dto.CarbsPer100g,
+            FatPer100g = dto.FatPer100g
         };
     }
 }

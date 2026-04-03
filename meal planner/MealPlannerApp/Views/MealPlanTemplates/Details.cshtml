@@ -83,8 +83,11 @@
                             {
                                 <li class="list-group-item d-flex justify-content-between align-items-start px-0">
                                     <div>
-                                        <div><strong>@meal.MealType</strong>: @meal.RecipeName</div>
-                                        <div class="small text-muted">Portion x@meal.PortionMultiplier.ToString("0.##")</div>
+                                        <div>
+                                            <strong>@meal.MealType</strong>:
+                                            <a asp-controller="Recipes" asp-action="Details" asp-route-id="@meal.RecipeId">@meal.RecipeName</a>
+                                        </div>
+                                        <div class="small text-muted">Portion x @meal.PortionMultiplier.ToString("0.#")</div>
                                     </div>
                                     <span>@meal.Calories kcal</span>
                                 </li>

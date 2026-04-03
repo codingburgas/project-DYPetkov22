@@ -46,6 +46,9 @@ public class IngredientService : IIngredientService
 
         existingIngredient.Name = ingredient.Name;
         existingIngredient.CaloriesPer100g = ingredient.CaloriesPer100g;
+        existingIngredient.ProteinPer100g = ingredient.ProteinPer100g;
+        existingIngredient.CarbsPer100g = ingredient.CarbsPer100g;
+        existingIngredient.FatPer100g = ingredient.FatPer100g;
         await _dbContext.SaveChangesAsync();
         return true;
     }
@@ -59,7 +62,8 @@ public class IngredientService : IIngredientService
         }
 
         var isInUse = await _dbContext.RecipeIngredients
-            .AnyAsync(ri => ri.IngredientId == id);
+            .AnyAsync(ri => ri.IngredientId == id)
+            || await _dbContext.UserIngredientPreferences.AnyAsync(preference => preference.IngredientId == id);
         if (isInUse)
         {
             return DeleteOperationResult.InUse;

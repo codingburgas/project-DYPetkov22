@@ -27,6 +27,7 @@ public class MealPlanTemplateDayDto
 
 public class MealPlanTemplateMealDto
 {
+    public int RecipeId { get; set; }
     public string MealType { get; set; } = string.Empty;
     public string RecipeName { get; set; } = string.Empty;
     public int Calories { get; set; }

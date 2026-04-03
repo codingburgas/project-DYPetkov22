@@ -17,6 +17,9 @@
         <tr>
             <th>Name</th>
             <th>Calories / 100g</th>
+            <th>Protein</th>
+            <th>Carbs</th>
+            <th>Fat</th>
             <th class="text-end">Actions</th>
         </tr>
         </thead>
@@ -26,6 +29,9 @@
             <tr>
                 <td>@ingredient.Name</td>
                 <td>@ingredient.CaloriesPer100g</td>
+                <td>@ingredient.ProteinPer100g.ToString("0.#") g</td>
+                <td>@ingredient.CarbsPer100g.ToString("0.#") g</td>
+                <td>@ingredient.FatPer100g.ToString("0.#") g</td>
                 <td class="text-end">
                     <a asp-action="Details" asp-route-id="@ingredient.Id" class="btn btn-sm btn-outline-info">Details</a>
                     @if (User.IsInRole(ApplicationRoles.Admin))

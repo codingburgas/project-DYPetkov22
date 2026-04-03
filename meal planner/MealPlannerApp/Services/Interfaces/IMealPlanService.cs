@@ -14,4 +14,9 @@ public interface IMealPlanService
     Task<WeeklyMealPlanResult> GetWeeklyPlan(int userId, DateTime? weekStart = null);
     Task<IReadOnlyCollection<PresetMealPlanOptionResult>> GetPresetMealPlans();
     Task StartPresetMealPlan(StartPresetMealPlanRequest request);
+    Task GeneratePersonalizedMealPlan(GeneratePersonalizedMealPlanRequest request);
+    Task<PlannerPreferencesResult> GetPlannerPreferences(int userId);
+    Task SavePlannerPreferences(SavePlannerPreferencesRequest request);
+    Task<bool> SwapMeal(int mealId, int userId);
+    Task<IReadOnlyCollection<WeeklyProgressSummaryResult>> GetWeeklyHistory(int userId, int weeks = 8);
 }

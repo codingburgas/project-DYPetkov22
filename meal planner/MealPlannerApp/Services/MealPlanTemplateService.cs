@@ -20,6 +20,8 @@ public class MealPlanTemplateService : IMealPlanTemplateService
             .Include(t => t.Owner)
             .Include(t => t.Meals)
             .ThenInclude(m => m.Recipe)
+            .ThenInclude(r => r.RecipeIngredients)
+            .ThenInclude(ri => ri.Ingredient)
             .OrderByDescending(t => t.ApprovalStatus == ApprovalStatus.Approved)
             .ThenBy(t => t.Name)
             .ToListAsync();
@@ -31,13 +33,16 @@ public class MealPlanTemplateService : IMealPlanTemplateService
             .Include(t => t.Owner)
             .Include(t => t.Meals)
             .ThenInclude(m => m.Recipe)
+            .ThenInclude(r => r.RecipeIngredients)
+            .ThenInclude(ri => ri.Ingredient)
             .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task<MealPlanTemplate> CreateFromWeek(int ownerId, DateTime weekStart, string name, string? description, bool submitForReview)
     {
+        var normalizedWeekStart = Infrastructure.WeekDateHelper.GetWeekStart(weekStart);
         var weeklyPlan = await _dbContext.MealPlans
-            .Where(mp => mp.UserId == ownerId && mp.Date >= weekStart.Date && mp.Date < weekStart.Date.AddDays(7))
+            .Where(mp => mp.UserId == ownerId && mp.Date >= normalizedWeekStart && mp.Date < normalizedWeekStart.AddDays(7))
             .Include(mp => mp.Meals)
             .ThenInclude(m => m.Recipe)
             .OrderBy(mp => mp.Date)
@@ -46,7 +51,7 @@ public class MealPlanTemplateService : IMealPlanTemplateService
         var sourceMeals = weeklyPlan
             .SelectMany(plan => plan.Meals.Select(meal => new
             {
-                DayOffset = (plan.Date.Date - weekStart.Date).Days,
+                DayOffset = (plan.Date.Date - normalizedWeekStart).Days,
                 Meal = meal
             }))
             .Where(x => x.DayOffset is >= 0 and < 7)
@@ -64,7 +69,7 @@ public class MealPlanTemplateService : IMealPlanTemplateService
             OwnerId = ownerId,
             Name = name.Trim(),
             Description = string.IsNullOrWhiteSpace(description) ? null : description.Trim(),
-            WeekStart = weekStart.Date,
+            WeekStart = normalizedWeekStart,
             CreatedAt = DateTime.UtcNow
         };
         ApplyReviewState(template, submitForReview ? ApprovalStatus.PendingReview : ApprovalStatus.Draft, null);
@@ -158,7 +163,17 @@ public class MealPlanTemplateService : IMealPlanTemplateService
             return false;
         }
 
-        var rangeStart = weekStart.Date;
+        var blockedIngredientIds = await _dbContext.UserIngredientPreferences
+            .Where(preference => preference.UserId == currentUserId)
+            .Select(preference => preference.IngredientId)
+            .ToListAsync();
+        if (blockedIngredientIds.Count > 0 && template.Meals.Any(meal =>
+                meal.Recipe.RecipeIngredients.Any(recipeIngredient => blockedIngredientIds.Contains(recipeIngredient.IngredientId))))
+        {
+            throw new InvalidOperationException("This template includes ingredients from your excluded or allergy list.");
+        }
+
+        var rangeStart = Infrastructure.WeekDateHelper.GetWeekStart(weekStart);
         var rangeEnd = rangeStart.AddDays(7);
 
         await using var transaction = await _dbContext.Database.BeginTransactionAsync();

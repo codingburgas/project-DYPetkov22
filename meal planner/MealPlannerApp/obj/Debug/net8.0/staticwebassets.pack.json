@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\MealPlannerApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\projects\\project-DYPetkov22\\meal planner\\MealPlannerApp\\wwwroot\\css\\meal-planner-dashboard.css",
+      "PackagePath": "staticwebassets\\css\\meal-planner-dashboard.css"
+    },
+    {
       "Id": "C:\\projects\\project-DYPetkov22\\meal planner\\MealPlannerApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

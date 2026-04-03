@@ -26,12 +26,21 @@ namespace MealPlannerApp.Migrations
                     b.Property<int>("CaloriesPer100g")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("CarbsPer100g")
+                        .HasColumnType("REAL");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("FatPer100g")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("ProteinPer100g")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -42,148 +51,211 @@ namespace MealPlannerApp.Migrations
                         {
                             Id = 1,
                             CaloriesPer100g = 165,
+                            CarbsPer100g = 0.0,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Chicken Breast"
+                            FatPer100g = 3.6000000000000001,
+                            Name = "Chicken Breast",
+                            ProteinPer100g = 31.0
                         },
                         new
                         {
                             Id = 2,
                             CaloriesPer100g = 130,
+                            CarbsPer100g = 28.0,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Rice"
+                            FatPer100g = 0.29999999999999999,
+                            Name = "Rice",
+                            ProteinPer100g = 2.7000000000000002
                         },
                         new
                         {
                             Id = 3,
                             CaloriesPer100g = 35,
+                            CarbsPer100g = 7.0,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Broccoli"
+                            FatPer100g = 0.40000000000000002,
+                            Name = "Broccoli",
+                            ProteinPer100g = 2.7999999999999998
                         },
                         new
                         {
                             Id = 4,
                             CaloriesPer100g = 155,
+                            CarbsPer100g = 1.1000000000000001,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Eggs"
+                            FatPer100g = 11.0,
+                            Name = "Eggs",
+                            ProteinPer100g = 13.0
                         },
                         new
                         {
                             Id = 5,
                             CaloriesPer100g = 23,
+                            CarbsPer100g = 3.6000000000000001,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Spinach"
+                            FatPer100g = 0.40000000000000002,
+                            Name = "Spinach",
+                            ProteinPer100g = 2.8999999999999999
                         },
                         new
                         {
                             Id = 6,
                             CaloriesPer100g = 402,
+                            CarbsPer100g = 1.3,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Cheddar Cheese"
+                            FatPer100g = 33.0,
+                            Name = "Cheddar Cheese",
+                            ProteinPer100g = 25.0
                         },
                         new
                         {
                             Id = 7,
                             CaloriesPer100g = 389,
+                            CarbsPer100g = 66.299999999999997,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Rolled Oats"
+                            FatPer100g = 6.9000000000000004,
+                            Name = "Rolled Oats",
+                            ProteinPer100g = 16.899999999999999
                         },
                         new
                         {
                             Id = 8,
                             CaloriesPer100g = 59,
+                            CarbsPer100g = 3.6000000000000001,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Greek Yogurt"
+                            FatPer100g = 0.40000000000000002,
+                            Name = "Greek Yogurt",
+                            ProteinPer100g = 10.0
                         },
                         new
                         {
                             Id = 9,
                             CaloriesPer100g = 89,
+                            CarbsPer100g = 22.800000000000001,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Banana"
+                            FatPer100g = 0.29999999999999999,
+                            Name = "Banana",
+                            ProteinPer100g = 1.1000000000000001
                         },
                         new
                         {
                             Id = 10,
                             CaloriesPer100g = 208,
+                            CarbsPer100g = 0.0,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Salmon Fillet"
+                            FatPer100g = 13.0,
+                            Name = "Salmon Fillet",
+                            ProteinPer100g = 20.0
                         },
                         new
                         {
                             Id = 11,
                             CaloriesPer100g = 86,
+                            CarbsPer100g = 20.100000000000001,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Sweet Potato"
+                            FatPer100g = 0.10000000000000001,
+                            Name = "Sweet Potato",
+                            ProteinPer100g = 1.6000000000000001
                         },
                         new
                         {
                             Id = 12,
                             CaloriesPer100g = 164,
+                            CarbsPer100g = 27.399999999999999,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Chickpeas"
+                            FatPer100g = 2.6000000000000001,
+                            Name = "Chickpeas",
+                            ProteinPer100g = 8.9000000000000004
                         },
                         new
                         {
                             Id = 13,
                             CaloriesPer100g = 18,
+                            CarbsPer100g = 3.8999999999999999,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Cherry Tomatoes"
+                            FatPer100g = 0.20000000000000001,
+                            Name = "Cherry Tomatoes",
+                            ProteinPer100g = 0.90000000000000002
                         },
                         new
                         {
                             Id = 14,
                             CaloriesPer100g = 149,
+                            CarbsPer100g = 30.899999999999999,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Whole Wheat Pasta"
+                            FatPer100g = 0.90000000000000002,
+                            Name = "Whole Wheat Pasta",
+                            ProteinPer100g = 5.7999999999999998
                         },
                         new
                         {
                             Id = 15,
                             CaloriesPer100g = 431,
+                            CarbsPer100g = 4.0999999999999996,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Parmesan"
+                            FatPer100g = 29.0,
+                            Name = "Parmesan",
+                            ProteinPer100g = 38.0
                         },
                         new
                         {
                             Id = 16,
                             CaloriesPer100g = 31,
+                            CarbsPer100g = 6.0,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Bell Pepper"
+                            FatPer100g = 0.29999999999999999,
+                            Name = "Bell Pepper",
+                            ProteinPer100g = 1.0
                         },
                         new
                         {
                             Id = 17,
                             CaloriesPer100g = 40,
+                            CarbsPer100g = 9.3000000000000007,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Onion"
+                            FatPer100g = 0.10000000000000001,
+                            Name = "Onion",
+                            ProteinPer100g = 1.1000000000000001
                         },
                         new
                         {
                             Id = 18,
                             CaloriesPer100g = 149,
+                            CarbsPer100g = 33.100000000000001,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Garlic"
+                            FatPer100g = 0.5,
+                            Name = "Garlic",
+                            ProteinPer100g = 6.4000000000000004
                         },
                         new
                         {
                             Id = 19,
                             CaloriesPer100g = 884,
+                            CarbsPer100g = 0.0,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Olive Oil"
+                            FatPer100g = 100.0,
+                            Name = "Olive Oil",
+                            ProteinPer100g = 0.0
                         },
                         new
                         {
                             Id = 20,
                             CaloriesPer100g = 16,
+                            CarbsPer100g = 3.6000000000000001,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Cucumber"
+                            FatPer100g = 0.10000000000000001,
+                            Name = "Cucumber",
+                            ProteinPer100g = 0.69999999999999996
                         },
                         new
                         {
                             Id = 21,
                             CaloriesPer100g = 160,
+                            CarbsPer100g = 8.5,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Name = "Avocado"
+                            FatPer100g = 14.699999999999999,
+                            Name = "Avocado",
+                            ProteinPer100g = 2.0
                         });
                 });
 
@@ -810,6 +882,16 @@ namespace MealPlannerApp.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("BodyWeightKg")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("REAL")
+                        .HasDefaultValue(70.0);
+
+                    b.Property<double>("CarbsTargetGrams")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("REAL")
+                        .HasDefaultValue(273.0);
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
@@ -824,6 +906,15 @@ namespace MealPlannerApp.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ExcludedFoods")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("FatTargetGrams")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("REAL")
+                        .HasDefaultValue(56.0);
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("INTEGER");
@@ -847,6 +938,16 @@ namespace MealPlannerApp.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
+
+                    b.Property<int>("PreferredMealsPerDay")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(3);
+
+                    b.Property<double>("ProteinTargetGrams")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("REAL")
+                        .HasDefaultValue(126.0);
 
                     b.Property<int>("Role")
                         .HasColumnType("INTEGER");
@@ -879,19 +980,52 @@ namespace MealPlannerApp.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
+                            BodyWeightKg = 70.0,
+                            CarbsTargetGrams = 273.0,
                             ConcurrencyStamp = "c3e1c75f-159f-4e2d-a2eb-8b67800fc86f",
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "admin@mealplanner.local",
                             EmailConfirmed = true,
+                            FatTargetGrams = 56.0,
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@MEALPLANNER.LOCAL",
                             NormalizedUserName = "ADMIN",
                             PhoneNumberConfirmed = false,
+                            PreferredMealsPerDay = 3,
+                            ProteinTargetGrams = 126.0,
                             Role = 0,
                             SecurityStamp = "d6420f08-9b3e-4c53-bf64-cf9afc6ec3d8",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
+                });
+
+            modelBuilder.Entity("MealPlannerApp.Models.UserIngredientPreference", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PreferenceType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientId");
+
+                    b.HasIndex("UserId", "IngredientId", "PreferenceType")
+                        .IsUnique();
+
+                    b.ToTable("UserIngredientPreferences");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
@@ -1110,6 +1244,25 @@ namespace MealPlannerApp.Migrations
                     b.Navigation("Recipe");
                 });
 
+            modelBuilder.Entity("MealPlannerApp.Models.UserIngredientPreference", b =>
+                {
+                    b.HasOne("MealPlannerApp.Models.Ingredient", "Ingredient")
+                        .WithMany("UserPreferences")
+                        .HasForeignKey("IngredientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MealPlannerApp.Models.User", "User")
+                        .WithMany("IngredientPreferences")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ingredient");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
@@ -1164,6 +1317,8 @@ namespace MealPlannerApp.Migrations
             modelBuilder.Entity("MealPlannerApp.Models.Ingredient", b =>
                 {
                     b.Navigation("RecipeIngredients");
+
+                    b.Navigation("UserPreferences");
                 });
 
             modelBuilder.Entity("MealPlannerApp.Models.MealPlan", b =>
@@ -1187,6 +1342,8 @@ namespace MealPlannerApp.Migrations
 
             modelBuilder.Entity("MealPlannerApp.Models.User", b =>
                 {
+                    b.Navigation("IngredientPreferences");
+
                     b.Navigation("MealPlanTemplates");
 
                     b.Navigation("MealPlans");

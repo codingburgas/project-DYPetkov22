@@ -38,7 +38,9 @@ public class MealPlanTemplatesController : Controller
     [Authorize]
     public IActionResult CreateFromWeek(DateTime? weekStart = null)
     {
-        var targetWeek = weekStart?.Date ?? WeekDateHelper.GetCurrentWeekStart();
+        var targetWeek = weekStart.HasValue
+            ? WeekDateHelper.GetWeekStart(weekStart.Value)
+            : WeekDateHelper.GetCurrentWeekStart();
         return View(new CreateMealPlanTemplateDto
         {
             WeekStart = targetWeek,
@@ -97,12 +99,24 @@ public class MealPlanTemplatesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Apply(int id, DateTime? weekStart = null)
     {
-        var targetWeek = weekStart?.Date ?? WeekDateHelper.GetCurrentWeekStart();
-        var applied = await _mealPlanTemplateService.ApplyTemplateToWeek(
-            id,
-            User.GetRequiredUserId(),
-            targetWeek,
-            IsAdmin());
+        var targetWeek = weekStart.HasValue
+            ? WeekDateHelper.GetWeekStart(weekStart.Value)
+            : WeekDateHelper.GetCurrentWeekStart();
+        bool applied;
+        try
+        {
+            applied = await _mealPlanTemplateService.ApplyTemplateToWeek(
+                id,
+                User.GetRequiredUserId(),
+                targetWeek,
+                IsAdmin());
+        }
+        catch (InvalidOperationException ex)
+        {
+            TempData["ErrorMessage"] = ex.Message;
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
         if (!applied)
         {
             return NotFound();
@@ -172,6 +186,7 @@ public class MealPlanTemplatesController : Controller
                     .OrderBy(meal => meal.MealType)
                     .Select(meal => new MealPlanTemplateMealDto
                     {
+                        RecipeId = meal.RecipeId,
                         MealType = meal.MealType.ToString(),
                         RecipeName = meal.Recipe.Name,
                         Calories = (int)Math.Round(meal.Recipe.Calories * meal.PortionMultiplier, MidpointRounding.AwayFromZero),

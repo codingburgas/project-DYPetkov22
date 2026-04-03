@@ -19,6 +19,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
     public DbSet<Meal> Meals => Set<Meal>();
     public DbSet<MealPlanTemplate> MealPlanTemplates => Set<MealPlanTemplate>();
     public DbSet<MealPlanTemplateMeal> MealPlanTemplateMeals => Set<MealPlanTemplateMeal>();
+    public DbSet<UserIngredientPreference> UserIngredientPreferences => Set<UserIngredientPreference>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,6 +38,26 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
             .IsRequired();
 
         modelBuilder.Entity<User>()
+            .Property(u => u.PreferredMealsPerDay)
+            .HasDefaultValue(3);
+
+        modelBuilder.Entity<User>()
+            .Property(u => u.BodyWeightKg)
+            .HasDefaultValue(70.0);
+
+        modelBuilder.Entity<User>()
+            .Property(u => u.ProteinTargetGrams)
+            .HasDefaultValue(126.0);
+
+        modelBuilder.Entity<User>()
+            .Property(u => u.CarbsTargetGrams)
+            .HasDefaultValue(273.0);
+
+        modelBuilder.Entity<User>()
+            .Property(u => u.FatTargetGrams)
+            .HasDefaultValue(56.0);
+
+        modelBuilder.Entity<User>()
             .HasMany(u => u.MealPlans)
             .WithOne(mp => mp.User)
             .HasForeignKey(mp => mp.UserId);
@@ -52,6 +73,11 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
             .WithOne(t => t.Owner)
             .HasForeignKey(t => t.OwnerId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.IngredientPreferences)
+            .WithOne(preference => preference.User)
+            .HasForeignKey(preference => preference.UserId);
 
         modelBuilder.Entity<MealPlan>()
             .HasMany(mp => mp.Meals)
@@ -81,6 +107,16 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
             .HasIndex(ri => new { ri.RecipeId, ri.IngredientId })
             .IsUnique();
 
+        modelBuilder.Entity<UserIngredientPreference>()
+            .HasOne(preference => preference.Ingredient)
+            .WithMany(ingredient => ingredient.UserPreferences)
+            .HasForeignKey(preference => preference.IngredientId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<UserIngredientPreference>()
+            .HasIndex(preference => new { preference.UserId, preference.IngredientId, preference.PreferenceType })
+            .IsUnique();
+
         modelBuilder.Entity<MealPlanTemplate>()
             .HasMany(t => t.Meals)
             .WithOne(m => m.MealPlanTemplate)
@@ -107,31 +143,36 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, i
                 LockoutEnabled = true,
                 SecurityStamp = "d6420f08-9b3e-4c53-bf64-cf9afc6ec3d8",
                 ConcurrencyStamp = "c3e1c75f-159f-4e2d-a2eb-8b67800fc86f",
+                PreferredMealsPerDay = 3,
+                BodyWeightKg = 70,
+                ProteinTargetGrams = 126,
+                CarbsTargetGrams = 273,
+                FatTargetGrams = 56,
                 Role = UserRole.Admin
             });
 
         modelBuilder.Entity<Ingredient>().HasData(
-            new Ingredient { Id = 1, CreatedAt = seedCreatedAt, Name = "Chicken Breast", CaloriesPer100g = 165 },
-            new Ingredient { Id = 2, CreatedAt = seedCreatedAt, Name = "Rice", CaloriesPer100g = 130 },
-            new Ingredient { Id = 3, CreatedAt = seedCreatedAt, Name = "Broccoli", CaloriesPer100g = 35 },
-            new Ingredient { Id = 4, CreatedAt = seedCreatedAt, Name = "Eggs", CaloriesPer100g = 155 },
-            new Ingredient { Id = 5, CreatedAt = seedCreatedAt, Name = "Spinach", CaloriesPer100g = 23 },
-            new Ingredient { Id = 6, CreatedAt = seedCreatedAt, Name = "Cheddar Cheese", CaloriesPer100g = 402 },
-            new Ingredient { Id = 7, CreatedAt = seedCreatedAt, Name = "Rolled Oats", CaloriesPer100g = 389 },
-            new Ingredient { Id = 8, CreatedAt = seedCreatedAt, Name = "Greek Yogurt", CaloriesPer100g = 59 },
-            new Ingredient { Id = 9, CreatedAt = seedCreatedAt, Name = "Banana", CaloriesPer100g = 89 },
-            new Ingredient { Id = 10, CreatedAt = seedCreatedAt, Name = "Salmon Fillet", CaloriesPer100g = 208 },
-            new Ingredient { Id = 11, CreatedAt = seedCreatedAt, Name = "Sweet Potato", CaloriesPer100g = 86 },
-            new Ingredient { Id = 12, CreatedAt = seedCreatedAt, Name = "Chickpeas", CaloriesPer100g = 164 },
-            new Ingredient { Id = 13, CreatedAt = seedCreatedAt, Name = "Cherry Tomatoes", CaloriesPer100g = 18 },
-            new Ingredient { Id = 14, CreatedAt = seedCreatedAt, Name = "Whole Wheat Pasta", CaloriesPer100g = 149 },
-            new Ingredient { Id = 15, CreatedAt = seedCreatedAt, Name = "Parmesan", CaloriesPer100g = 431 },
-            new Ingredient { Id = 16, CreatedAt = seedCreatedAt, Name = "Bell Pepper", CaloriesPer100g = 31 },
-            new Ingredient { Id = 17, CreatedAt = seedCreatedAt, Name = "Onion", CaloriesPer100g = 40 },
-            new Ingredient { Id = 18, CreatedAt = seedCreatedAt, Name = "Garlic", CaloriesPer100g = 149 },
-            new Ingredient { Id = 19, CreatedAt = seedCreatedAt, Name = "Olive Oil", CaloriesPer100g = 884 },
-            new Ingredient { Id = 20, CreatedAt = seedCreatedAt, Name = "Cucumber", CaloriesPer100g = 16 },
-            new Ingredient { Id = 21, CreatedAt = seedCreatedAt, Name = "Avocado", CaloriesPer100g = 160 });
+            new Ingredient { Id = 1, CreatedAt = seedCreatedAt, Name = "Chicken Breast", CaloriesPer100g = 165, ProteinPer100g = 31.0, CarbsPer100g = 0.0, FatPer100g = 3.6 },
+            new Ingredient { Id = 2, CreatedAt = seedCreatedAt, Name = "Rice", CaloriesPer100g = 130, ProteinPer100g = 2.7, CarbsPer100g = 28.0, FatPer100g = 0.3 },
+            new Ingredient { Id = 3, CreatedAt = seedCreatedAt, Name = "Broccoli", CaloriesPer100g = 35, ProteinPer100g = 2.8, CarbsPer100g = 7.0, FatPer100g = 0.4 },
+            new Ingredient { Id = 4, CreatedAt = seedCreatedAt, Name = "Eggs", CaloriesPer100g = 155, ProteinPer100g = 13.0, CarbsPer100g = 1.1, FatPer100g = 11.0 },
+            new Ingredient { Id = 5, CreatedAt = seedCreatedAt, Name = "Spinach", CaloriesPer100g = 23, ProteinPer100g = 2.9, CarbsPer100g = 3.6, FatPer100g = 0.4 },
+            new Ingredient { Id = 6, CreatedAt = seedCreatedAt, Name = "Cheddar Cheese", CaloriesPer100g = 402, ProteinPer100g = 25.0, CarbsPer100g = 1.3, FatPer100g = 33.0 },
+            new Ingredient { Id = 7, CreatedAt = seedCreatedAt, Name = "Rolled Oats", CaloriesPer100g = 389, ProteinPer100g = 16.9, CarbsPer100g = 66.3, FatPer100g = 6.9 },
+            new Ingredient { Id = 8, CreatedAt = seedCreatedAt, Name = "Greek Yogurt", CaloriesPer100g = 59, ProteinPer100g = 10.0, CarbsPer100g = 3.6, FatPer100g = 0.4 },
+            new Ingredient { Id = 9, CreatedAt = seedCreatedAt, Name = "Banana", CaloriesPer100g = 89, ProteinPer100g = 1.1, CarbsPer100g = 22.8, FatPer100g = 0.3 },
+            new Ingredient { Id = 10, CreatedAt = seedCreatedAt, Name = "Salmon Fillet", CaloriesPer100g = 208, ProteinPer100g = 20.0, CarbsPer100g = 0.0, FatPer100g = 13.0 },
+            new Ingredient { Id = 11, CreatedAt = seedCreatedAt, Name = "Sweet Potato", CaloriesPer100g = 86, ProteinPer100g = 1.6, CarbsPer100g = 20.1, FatPer100g = 0.1 },
+            new Ingredient { Id = 12, CreatedAt = seedCreatedAt, Name = "Chickpeas", CaloriesPer100g = 164, ProteinPer100g = 8.9, CarbsPer100g = 27.4, FatPer100g = 2.6 },
+            new Ingredient { Id = 13, CreatedAt = seedCreatedAt, Name = "Cherry Tomatoes", CaloriesPer100g = 18, ProteinPer100g = 0.9, CarbsPer100g = 3.9, FatPer100g = 0.2 },
+            new Ingredient { Id = 14, CreatedAt = seedCreatedAt, Name = "Whole Wheat Pasta", CaloriesPer100g = 149, ProteinPer100g = 5.8, CarbsPer100g = 30.9, FatPer100g = 0.9 },
+            new Ingredient { Id = 15, CreatedAt = seedCreatedAt, Name = "Parmesan", CaloriesPer100g = 431, ProteinPer100g = 38.0, CarbsPer100g = 4.1, FatPer100g = 29.0 },
+            new Ingredient { Id = 16, CreatedAt = seedCreatedAt, Name = "Bell Pepper", CaloriesPer100g = 31, ProteinPer100g = 1.0, CarbsPer100g = 6.0, FatPer100g = 0.3 },
+            new Ingredient { Id = 17, CreatedAt = seedCreatedAt, Name = "Onion", CaloriesPer100g = 40, ProteinPer100g = 1.1, CarbsPer100g = 9.3, FatPer100g = 0.1 },
+            new Ingredient { Id = 18, CreatedAt = seedCreatedAt, Name = "Garlic", CaloriesPer100g = 149, ProteinPer100g = 6.4, CarbsPer100g = 33.1, FatPer100g = 0.5 },
+            new Ingredient { Id = 19, CreatedAt = seedCreatedAt, Name = "Olive Oil", CaloriesPer100g = 884, ProteinPer100g = 0.0, CarbsPer100g = 0.0, FatPer100g = 100.0 },
+            new Ingredient { Id = 20, CreatedAt = seedCreatedAt, Name = "Cucumber", CaloriesPer100g = 16, ProteinPer100g = 0.7, CarbsPer100g = 3.6, FatPer100g = 0.1 },
+            new Ingredient { Id = 21, CreatedAt = seedCreatedAt, Name = "Avocado", CaloriesPer100g = 160, ProteinPer100g = 2.0, CarbsPer100g = 8.5, FatPer100g = 14.7 });
 
         modelBuilder.Entity<Recipe>().HasData(
             new Recipe
